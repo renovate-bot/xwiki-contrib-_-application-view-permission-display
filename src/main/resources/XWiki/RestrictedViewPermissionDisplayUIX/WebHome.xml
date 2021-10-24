@@ -414,6 +414,8 @@
       <content>{{velocity output="false"}}
 $xwiki.jsx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
 $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
+## here one can insert a page name a link to explanations for the view permissions
+#set($explanationPage = '')
 ## now compute if we have any visibility restrictions
 #set($sec = $services.security.authorization)
 #set($docRef = $doc.documentReference)
@@ -479,6 +481,10 @@ $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
       #set($info = $services.localization.render('org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnSomeSpace', [$protectedDocTitle]))
       #set($shouldLink = true)
     #end
+  #end
+  #if($explanationPage != '')
+    #set($protectedDocRef = $explanationPage)
+    #set($shouldLink = true)
   #end
   ## so conclusion is $info
 #end
