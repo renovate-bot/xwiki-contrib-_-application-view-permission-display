@@ -29,7 +29,7 @@
   <artifactId>uix-view-restriction-display</artifactId>
   <packaging>xar</packaging>
   <name>Show View Protection</name>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <description>For wiki pages that are only visible to some users show the view restrictions.</description>
   <properties>
     <xwiki.extension.namespaces>wiki:xwiki</xwiki.extension.namespaces>
