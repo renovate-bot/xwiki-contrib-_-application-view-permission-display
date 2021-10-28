@@ -39,7 +39,9 @@
   <content>org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnThisPage=This page (and only this page) is view protected.
 org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnThisSpace=This page and all its subpages are view protected.
 org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnSomeSpace=This page is view protected as it is a subpage of «{0}».
-org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsGlobal=The complete wiki is view protected.</content>
+org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsGlobal=The complete wiki is view protected.
+
+org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.programmingRightsMissing=This extension needs to be installed by a user with programming rights.</content>
   <object>
     <name>XWiki.RestrictedViewPermissionDisplayUIX.Translations</name>
     <number>0</number>

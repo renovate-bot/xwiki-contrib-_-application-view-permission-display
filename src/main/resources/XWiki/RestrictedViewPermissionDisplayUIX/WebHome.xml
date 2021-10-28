@@ -36,7 +36,18 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content/>
+  <content>{{comment}}
+  If this page is last edited by a user who does not even have scripting rights, we get a different error message.
+  As we are not able to execute any scripts under these conditions we leave it with that generic message.
+{{/comment}}
+
+{{velocity}}
+#set($docHasProgramming = $services.security.authorization.hasAccess("PROGRAMMING", $doc.getContentAuthorReference(), $doc.getDocumentReference()))
+#if(!$docHasProgramming)
+#set($discard = $services.localization.use('document', 'XWiki.RestrictedViewPermissionDisplayUIX.Translations'))
+{{error}}$services.localization.render('org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.programmingRightsMissing'){{/error}}
+#end
+{{/velocity}}</content>
   <object>
     <name>XWiki.RestrictedViewPermissionDisplayUIX.WebHome</name>
     <number>0</number>
@@ -150,6 +161,45 @@
   <object>
     <name>XWiki.RestrictedViewPermissionDisplayUIX.WebHome</name>
     <number>0</number>
+    <className>XWiki.RequiredRightClass</className>
+    <guid>2d3366ea-ca2b-4192-bace-c3c146b05a74</guid>
+    <class>
+      <name>XWiki.RequiredRightClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <level>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>level</name>
+        <number>1</number>
+        <picker>0</picker>
+        <prettyName>level</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <sort>none</sort>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <values>edit|programming</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </level>
+    </class>
+    <property>
+      <level>programming</level>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.RestrictedViewPermissionDisplayUIX.WebHome</name>
+    <number>0</number>
     <className>XWiki.StyleSheetExtension</className>
     <guid>2653b5d3-8836-4170-b014-f38995e442e5</guid>
     <class>
@@ -254,7 +304,7 @@
     <property>
       <code>#hdrx {
   display:none;
-  color: red;
+  color: inherit;
 }
 
 #document-title #hdrx {
