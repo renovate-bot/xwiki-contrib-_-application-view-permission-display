@@ -162,7 +162,7 @@
     <name>XWiki.RestrictedViewPermissionDisplayUIX.WebHome</name>
     <number>0</number>
     <className>XWiki.RequiredRightClass</className>
-    <guid>2d3366ea-ca2b-4192-bace-c3c146b05a74</guid>
+    <guid>4f279aa7-5bf7-4c9f-bbba-6448fc92aed1</guid>
     <class>
       <name>XWiki.RequiredRightClass</name>
       <customClass/>
@@ -314,6 +314,11 @@
   vertical-align: super;
 }
 
+/* we still have an empty paragraph here */
+.document-info &gt; p:first-child {
+  display:none;
+}
+
 #hdrx * {
   display:inline;
 }</code>
@@ -462,17 +467,22 @@
     </property>
     <property>
       <content>{{velocity output="false"}}
-$xwiki.jsx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
-$xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
-## here one can insert a page name a link to explanations for the view permissions
+## here one can insert a page name containing explanations for the view permissions
 #set($explanationPage = '')
 ## now compute if we have any visibility restrictions
 #set($sec = $services.security.authorization)
 #set($docRef = $doc.documentReference)
 #set($defaultRef = $services.model.createDocumentReference('', '', '', 'default'))
-##default page is $defaultRef
-#set($globalViewCheckPage = $services.model.createDocumentReference('', ['XWiki', 'RestrictedViewPermissionDisplayUIX'], 'Translations', 'default'))
-##this page is $globalViewCheckPage
+#set($wikiId = $services.wiki.getCurrentWikiId())
+#set($globalViewCheckPage = $services.model.createDocumentReference($wikiId, ['XWiki', 'RestrictedViewPermissionDisplayUIX'], 'Translations', 'default'))
+#set($tdoc = $xwiki.getDocument($globalViewCheckPage))
+#set($canWork = $tdoc != $NULL &amp;&amp; !$tdoc.isNew())
+#if(!$canWork)
+  #set($wikiId = $services.wiki.getMainWikiId())
+  #set($globalViewCheckPage = $services.model.createDocumentReference($wikiId, ['XWiki', 'RestrictedViewPermissionDisplayUIX'], 'Translations', 'default'))
+  #set($tdoc = $xwiki.getDocument($globalViewCheckPage))
+  #set($canWork = $tdoc != $NULL &amp;&amp; !$tdoc.isNew())
+#end
 ## FIXME: replace this group the the group that has "view" rights on the wiki
 ## this might be the global XWikiAllGroup, or some other group
 ## FIXME2: if we are in a subwiki, we should check if we should use the global group or the local all group
@@ -488,8 +498,14 @@ $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
   #setVariable ("$result" $_protected)
 #end
 
-#isRestriced($docRef $restricted)
+#if($canWork)
+  #isRestriced($docRef $restricted)
+#else
+  #set($restricted = false)
+#end
 #if($restricted)
+  $xwiki.jsx.use("${wikiId}:XWiki.RestrictedViewPermissionDisplayUIX.WebHome")
+  $xwiki.ssx.use("${wikiId}:XWiki.RestrictedViewPermissionDisplayUIX.WebHome")
   #set($discard = $services.localization.use('document', $services.model.serialize($globalViewCheckPage,'default')))
   #set($spaceRefs = $docRef.getSpaceReferences())
   #set($discard = $collectiontool.reverseModifiable($spaceRefs))
@@ -527,7 +543,6 @@ $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
       #set($info = $services.localization.render('org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnThisSpace'))
     #else
       #set($protectedDocTitle = "${xwiki.getDocument($protectedDocRef).getPlainTitle()}" )
-      ##set($protectedDocTitle = "${xwiki.getDocument($protectedDocRef).getPlainTitle()} aka ${services.model.serialize($protectedDocRef,'compactwiki')}" )
       #set($info = $services.localization.render('org.xwiki.contrib.XWiki.RestrictedViewPermissionDisplayUIX.restrictionIsOnSomeSpace', [$protectedDocTitle]))
       #set($shouldLink = true)
     #end
@@ -536,14 +551,13 @@ $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
     #set($protectedDocRef = $explanationPage)
     #set($shouldLink = true)
   #end
-  ## so conclusion is $info
 #end
 ## pass the values to the macro creating the output
 #set($discard = $xcontext.getContext().put('view_restrictions', ${restricted}))
 #set($discard = $xcontext.getContext().put('view_restrictions_title', $!{info}))
 #set($discard = $xcontext.getContext().put('view_restrictions_document', $!{protectedDocRef}))
 #set($discard = $xcontext.getContext().put('view_restrictions_haslink', $!{shouldLink}))
-{{/velocity}}{{velocity}}#if($xcontext.get('view_restrictions'))(% id="hdrx" title="$!escapetool.xml($xcontext.get('view_restrictions_title'))" #if($xcontext.get('view_restrictions_haslink')) data-xwiki-ref="$!escapetool.xml($xwiki.getURL($xcontext.get('view_restrictions_document')))" #{end}%)$services.icon.render('lock')#{end}{{/velocity}}</content>
+{{/velocity}}{{velocity}}#if($xcontext.get('view_restrictions'))(% id="hdrx" title="$!escapetool.xml($xcontext.get('view_restrictions_title'))" #if($xcontext.get('view_restrictions_haslink')) data-xwiki-ref="$!escapetool.xml($xwiki.getURL($xcontext.get('view_restrictions_document')))" #{end}%)$services.icon.render('lock')(% %)#{end}{{/velocity}}</content>
     </property>
     <property>
       <extensionPointId>org.xwiki.platform.template.title.before</extensionPointId>
@@ -555,7 +569,7 @@ $xwiki.ssx.use('xwiki:XWiki.RestrictedViewPermissionDisplayUIX.WebHome')
       <parameters/>
     </property>
     <property>
-      <scope>global</scope>
+      <scope>wiki</scope>
     </property>
   </object>
 </xwikidoc>
