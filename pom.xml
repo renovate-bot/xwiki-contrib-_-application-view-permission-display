@@ -26,13 +26,12 @@
    <version>11.10</version>
   </parent>
   <groupId>org.xwiki.contrib</groupId>
-  <artifactId>uix-view-restriction-display</artifactId>
+  <artifactId>application-view-restriction-display</artifactId>
   <packaging>xar</packaging>
   <name>Show View Protection</name>
   <version>0.2-SNAPSHOT</version>
-  <description>For wiki pages that are only visible to some users show the view restrictions.</description>
+  <description>For wiki pages that are only visible to some users show these view restrictions by a small icon next to the page title.</description>
   <properties>
-    <xwiki.extension.namespaces>wiki:xwiki</xwiki.extension.namespaces>
   </properties>
   <developers>
     <developer>
@@ -61,9 +60,9 @@
   <url>https://extensions.xwiki.org/xwiki/bin/view/Extension/View%20Page%20Protection%20Status</url>
   <!-- no scm yet -->
   <!-- scm>
-    <connection>scm:git:git://github.com/xwiki-contrib/application-emberjs-todolist.git</connection>
-    <developerConnection>scm:git:git@github.com:xwiki-contrib/application-emberjs-todolist.git</developerConnection>
-    <url>https://github.com/xwiki-contrib/application-emberjs-todolist</url>
+    <connection>scm:git:git://github.com/xwiki-contrib/application-view-restriction-display.git</connection>
+    <developerConnection>scm:git:git@github.com:xwiki-contrib/application-view-restriction-display.git</developerConnection>
+    <url>https://github.com/xwiki-contrib/application-view-restriction-display</url>
     <tag>HEAD</tag>
   </scm -->
   <!-- not yet: --> 
