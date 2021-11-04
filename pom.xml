@@ -26,7 +26,7 @@
    <version>11.10</version>
   </parent>
   <groupId>org.xwiki.contrib</groupId>
-  <artifactId>application-view-restriction-display</artifactId>
+  <artifactId>application-view-permission-display</artifactId>
   <packaging>xar</packaging>
   <name>Show View Protection</name>
   <version>0.2-SNAPSHOT</version>
