@@ -34,6 +34,7 @@
   <properties>
     <xwiki.issueManagement.jira.id>VIEWPERM</xwiki.issueManagement.jira.id>
     <xwiki.release.jira.skip>false</xwiki.release.jira.skip>
+    <xwiki.revapi.skip>true</xwiki.revapi.skip>
   </properties>
   <developers>
     <developer>
