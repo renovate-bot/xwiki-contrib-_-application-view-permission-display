@@ -29,7 +29,7 @@
   <artifactId>application-view-permission-display</artifactId>
   <packaging>xar</packaging>
   <name>Show View Restrictions</name>
-  <version>0.2-SNAPSHOT</version>
+  <version>1.0</version>
   <description>For wiki pages that are only visible to some users show these view restrictions by a small icon next to the page title.</description>
   <properties>
     <xwiki.issueManagement.jira.id>VIEWPERM</xwiki.issueManagement.jira.id>
@@ -65,7 +65,7 @@
     <connection>scm:git:git://github.com:xwiki-contrib/application-view-permission-display.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/application-view-permission-display.git</developerConnection>
     <url>https://github.com/xwiki-contrib/application-view-permission-display</url>
-    <tag>HEAD</tag>
+    <tag>application-view-permission-display-1.0</tag>
   </scm>
   <distributionManagement>
     <repository>
