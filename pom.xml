@@ -32,6 +32,8 @@
   <version>0.2-SNAPSHOT</version>
   <description>For wiki pages that are only visible to some users show these view restrictions by a small icon next to the page title.</description>
   <properties>
+    <xwiki.issueManagement.jira.id>VIEWPERM</xwiki.issueManagement.jira.id>
+    <xwiki.release.jira.skip>false</xwiki.release.jira.skip>
   </properties>
   <developers>
     <developer>
