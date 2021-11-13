@@ -28,7 +28,7 @@
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>application-view-permission-display</artifactId>
   <packaging>xar</packaging>
-  <name>Show View Protection</name>
+  <name>Show View Restrictions</name>
   <version>0.2-SNAPSHOT</version>
   <description>For wiki pages that are only visible to some users show these view restrictions by a small icon next to the page title.</description>
   <properties>
@@ -57,20 +57,18 @@
       </plugin>
     </plugins>
   </build>
-  <url>https://extensions.xwiki.org/xwiki/bin/view/Extension/View%20Page%20Protection%20Status</url>
-  <!-- no scm yet -->
-  <!-- scm>
-    <connection>scm:git:git://github.com/xwiki-contrib/application-view-restriction-display.git</connection>
-    <developerConnection>scm:git:git@github.com:xwiki-contrib/application-view-restriction-display.git</developerConnection>
-    <url>https://github.com/xwiki-contrib/application-view-restriction-display</url>
+  <url>https://extensions.xwiki.org/xwiki/bin/view/Extension/Show%20View%20Restrictions</url>
+  <scm>
+    <connection>scm:git:git://github.com:xwiki-contrib/application-view-permission-display.git</connection>
+    <developerConnection>scm:git:git@github.com:xwiki-contrib/application-view-permission-display.git</developerConnection>
+    <url>https://github.com/xwiki-contrib/application-view-permission-display</url>
     <tag>HEAD</tag>
-  </scm -->
-  <!-- not yet: --> 
-  <!-- distributionManagement>
+  </scm>
+  <distributionManagement>
     <repository>
       <id>xwiki-staging</id>
       <name>XWiki Staging Repository</name>
-      <url>http://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
+      <url>https://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
     </repository>
-  </distributionManagement -->
+  </distributionManagement>
 </project>

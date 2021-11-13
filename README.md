@@ -4,7 +4,7 @@ For wiki pages that are only visible to some users show these view restrictions 
 
 
 * Project Lead: [Clemens Robbenhaar](https://www.xwiki.org/xwiki/bin/view/XWiki/ClemensRobbenhaar)
-* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/View%20Page%20Protection%20Status)
+* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Show%20View%20Restrictions)
 * Communication: [Forum](https://forum.xwiki.org/>), [Chat](https://dev.xwiki.org/xwiki/bin/view/Community/Chat)
 * Issue Tracker: not yet
 * [Development Practices](https://dev.xwiki.org/xwiki/bin/view/Community/ApplicationDevelopmentBestPractices)
